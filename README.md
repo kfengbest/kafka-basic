@@ -43,3 +43,8 @@
 
     cd kafka-basic/consumer
     node index.js
+
+## Test with K6
+
+    cd kafka-basic/k6
+    docker run -i loadimpact/k6 run --vus 10 --duration 30s - <script.js

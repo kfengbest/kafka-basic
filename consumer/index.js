@@ -5,7 +5,9 @@ const kafka = new Kafka({
     brokers : ['localhost:9092']
 })
 
-const consumer = kafka.consumer({groupId : new Date().getTime().toString()});
+const groupId = "group1";  // new Date().getTime().toString();
+
+const consumer = kafka.consumer({groupId : groupId});
 
 async function consumeMessage() {
     await consumer.connect();
