@@ -5,9 +5,9 @@ export default function () {
     const url = 'http://192.168.0.26:3000/messages';
 
     const timestamp = new Date().getTime().toString();
-    const msg = `message at ${timestamp}`;
+    let msg = `message at ${timestamp}`;
 
-    const payload = JSON.stringify({
+    let payload = JSON.stringify({
         "message" : msg
     });
 
@@ -17,5 +17,18 @@ export default function () {
         },
     };
     
-    http.post(url, payload, params);
+    for(let i = 1; i < 10000; i++) {
+        const timestamp = new Date().getTime().toString();
+        let msg = `message at ${timestamp} No ${i}`;
+    
+        payload = JSON.stringify({
+            "message" : msg
+        });
+
+        http.post(url, payload, params);
+        sleep(0.1);
+
+        console.log(payload);
+    }
+ 
 }
